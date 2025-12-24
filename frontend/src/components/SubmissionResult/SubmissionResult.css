@@ -1,0 +1,137 @@
+.submission-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.submission-content {
+    text-align: center;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.submission-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease;
+}
+
+.success-icon {
+    background: #d1fae5;
+}
+
+.success-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #10b981;
+}
+
+.retry-icon {
+    background: #fef3c7;
+}
+
+.retry-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #f59e0b;
+}
+
+.info-icon {
+    background: #dbeafe;
+}
+
+.info-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #3b82f6;
+}
+
+.error-icon {
+    background: #fee2e2;
+}
+
+.error-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #ef4444;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.submission-content h2 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.submission-container.error .submission-content h2 {
+    color: #dc2626;
+}
+
+.submission-container.retry .submission-content h2 {
+    color: #d97706;
+}
+
+.submission-container.info .submission-content h2 {
+    color: #2563eb;
+}
+
+.submission-message {
+    margin: 0 0 2rem 0;
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.submission-container.error .submission-message {
+    color: #991b1b;
+}
+
+.submission-container.retry .submission-message {
+    color: #92400e;
+}
+
+.submission-container.info .submission-message {
+    color: #1e40af;
+}
+
+.btn-new-submission {
+    padding: 0.875rem 2rem;
+    background: #1c244e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-new-submission:hover {
+    background: #131838;
+    transform: translateY(-1px);
+}
+
+.btn-new-submission:active {
+    transform: translateY(0);
+}
+
