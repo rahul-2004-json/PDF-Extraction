@@ -57,15 +57,6 @@ export default function OrderForm({ orderData, onSubmit, onDataChange, onStartNe
         });
     };
 
-
-
-    const addContact = () => {
-        updateFormData(prev => ({
-            ...prev,
-            contacts: [...(prev.contacts || []), {}],
-        }));
-    };
-
     const removeContact = (index: number) => {
         updateFormData(prev => {
             const contacts = [...(prev.contacts || [])];
@@ -1433,4 +1424,5 @@ export default function OrderForm({ orderData, onSubmit, onDataChange, onStartNe
             </form >
         </div >
     );
+
 }
