@@ -4,9 +4,11 @@ import type {
     OrderFormData
 } from "../models/orderFormModel"
   
-// Base URL backend
-const BASE_URL = "http://localhost:8001/order-form";   // Use when running backend and frontend on different ports
-// const BASE_URL = "/order-form";                    // Uncomment this when running backend and frontend on the same port
+// Base URL backend - reads from environment variable
+// Set VITE_API_BASE_URL in .env file
+// For production: VITE_API_BASE_URL=https://pdf-extraction-y5zt.onrender.com/order-form
+// For local dev: VITE_API_BASE_URL=http://localhost:8001/order-form
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8001/order-form";
 
 async function handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
@@ -49,4 +51,5 @@ export async function healthCheck(): Promise<{ status: string; service: string }
     const response = await fetch(`${BASE_URL}/health`);
     return handleResponse<{ status: string; service: string }>(response);
 }
+
   
