@@ -99,34 +99,27 @@ async def upload_and_extract(file: UploadFile = File(...)):
         )
 
 
-@router.post("/submit")
+@router.post("/submit", response_model=FinalSubmissionResponse)
 async def submit_final_data(order_data: OrderFormData):
     try:
         sheet = open_sheet(os.environ["GOOGLE_SHEET_ID"])
         worksheet = sheet.sheet1
-
         from app.sheets.order_row_mapper import build_order_row
-
         row = build_order_row(order_data)
-
         worksheet.append_row(
             row,
             value_input_option="USER_ENTERED"
         )
-
-        return {
-            "status": "success",
-            "message": "Order data appended to Google Sheet successfully"
-        }
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Sheet insert failed: {repr(e)}"
+        return FinalSubmissionResponse(
+            success=True,
+            message="Order data appended to Google Sheet successfully",
+            submitted_data=order_data,
+            submission_status="success"
         )
 
 @router.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "service": "order-form-extraction"}
+
 
