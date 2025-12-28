@@ -35,7 +35,7 @@ export default function App() {
     STORAGE_KEYS.SUBMISSION_MESSAGE,
     ''
   );
-  const [isSubmissionSuccess, setIsSubmissionSuccess] = useState(true);
+  const [isSubmissionSuccess, setIsSubmissionSuccess] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<'success' | 'retry' | 'info'>('success');
 
   // Handle timeout warning for long submissions
@@ -82,9 +82,10 @@ export default function App() {
     try {
       setIsLoading(true);
       const response: FinalSubmissionResponse = await submitOrderForm(orderData);
+      console.log(response);
       setSubmissionMessage(response.message);
       setIsSubmissionSuccess(response.success);
-      setSubmissionStatus(response.submission_status || (response.success ? 'success' : 'retry'));
+      setSubmissionStatus(response.status);
       setCurrentStep('success');
       setExtractedData(undefined);
     } catch (error: any) {
