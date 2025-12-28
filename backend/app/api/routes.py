@@ -116,10 +116,16 @@ async def submit_final_data(order_data: OrderFormData):
             submitted_data=order_data,
             submission_status="success"
         )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Sheet insert failed: {repr(e)}"
+        )
 
 @router.get("/health")
 async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "service": "order-form-extraction"}
+
 
 
