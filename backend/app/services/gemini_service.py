@@ -160,8 +160,8 @@ Extract all relevant information and return a **single JSON object** with the fo
 - Ensure dates are in `YYYY-MM-DD` format and add 0 to the month and day if they are less than 10.
 - If a field is missing, return null or empty list as appropriate.
 - One time setup fee and one time implementation fee are two different things and should be extracted separately.
+- There should be only two contacts in the contacts list - one DSP contact and one Accounts Payable contact. Please don't inlcude any additional contacts.
 - Inside the plan_catalog add all the available plan details as listed
-- There should be only two contacts in the contacts list - one DSP contact and one Accounts Payable contact. Please don't inlcude any extra contacts.
 - Keep additional notes in the additional_notes field otherwise keep it empty
 - Return only JSON, no explanations or extra text.
 
@@ -172,12 +172,6 @@ PDF text:
             response = client.models.generate_content(
                 model="gemini-2.5-flash-lite",
                 contents=prompt,
-                config=types.GenerateContentConfig(
-                    temperature=0,       
-                    max_output_tokens=8192, # more output room
-                    top_p=1,
-                    top_k=1
-                )
             )
 
             cleaned_text = clean_gemini_response(response.text)
