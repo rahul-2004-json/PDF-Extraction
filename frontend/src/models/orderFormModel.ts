@@ -82,7 +82,7 @@ export interface ExtractionResponse {
 
 export interface FinalSubmissionResponse {
   success: boolean;
+  status: 'success' | 'retry' | 'info';
   message: string;
   submitted_data: OrderFormData;
-  submission_status?: 'success' | 'retry' | 'info';
 }  
